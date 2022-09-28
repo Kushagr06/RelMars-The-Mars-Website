@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if info %}
+    <div class="mb-3" style="text-align:center; padding-top: 20px; background-color: black;">
+      
+      <br>
+      <br>
+      <br>
+      {% for ins in info.photos %}
+      <div class="card mx-auto col-sm-6  border-danger" style="width: 25rem;
+      margin: 8px; display: inline-block;">
+       <a href="{{ins.img_src}}">
+       <img src={{ins.img_src}} class="card-img-top" alt="No img available">
+       </a>
+       <h5>id:{{ins.id}}</h5>
+       <h5>Camera Used: {{ins.camera.full_name}}</h5>
+       <h5>Date taken: {{ins.earth_date}}</h5>
+      </div>
+      {% endfor %}
+      {% else %}
+    </div>
+    <div class="mb-3 text-light" style="opacity:0.75; text-align: center;"> 
+      <br>
+      <br>
+      <br>
+   <h5>Welcome to RelMars.com<br>This Website is a celebration of the work done by NASA's Mars Rovers.</h5>
+   <p>You can look up the photos taken by the Mars Rovers here.</p>
+  </div>
+  <div class="container">
+
+    <form action="/" method="POST">
+      <select name="rover" id="rover" class="form-select form-select-mb" aria-label=".form-select-lg example" required style="margin-top:155px; margin-bottom: 20px;">
+        <option value="" >Rovers</option>
+        <option value="Curiosity">Curiosity(max sol:5111) </option>
+        <option value="Opportunity">Opportunity(max sol:3605)</option> 
+        <option value="Spirit">Spirit(max sol: 2208)</option>           
+      </select>
+      <div class="mb-3">
+        <label for="topicLabel" class="form-label"></label>
+        <input type="text" class="form-control" id="sol" aria-describedby="solHelp" name="sol" placeholder=" Enter sol value" required>
+      </div>
+      <div class="col-md-12 text-center">
+        <a href="">
+           <button type="submit" class="  btn btn-danger">Fly Off</button>
+         </a>
+       </div>
+  </form>
+  </div>
+  
+
+
+      {% endif %}
+      {% endblock body %} 
+
+
+
